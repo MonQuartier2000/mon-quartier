@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Quartier</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f7f9fc;
+      color: #222;
+    }
+
+    header {
+      background: white;
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .slogan {
+      margin-top: 8px;
+      color: #666;
+      font-size: 15px;
+    }
+
+    .container {
+      padding: 25px 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .search {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .category {
+      background: white;
+      padding: 20px 10px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      font-weight: bold;
+    }
+
+    .budget {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .budget button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #e63946;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .communes {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .commune {
+      background: white;
+      padding: 12px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+      border: 1px solid #eee;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Mon Quartier</div>
+    <div class="slogan">Le meilleur autour de vous</div>
+  </header>
+
+  <main class="container">
+
+    <input
+      class="search"
+      type="text"
+      placeholder="Que cherchez-vous ?"
+    >
+
+    <h2>Catégories</h2>
+
+    <div class="categories">
+      <div class="category">🍽️ Restaurants</div>
+      <div class="category">🛍️ Boutiques</div>
+      <div class="category">🔧 Garages</div>
+      <div class="category">👨‍⚕️ Santé</div>
+    </div>
+
+    <div class="budget">
+      <h2>Que puis-je manger avec mon budget ?</h2>
+      <p>Trouvez des plats adaptés à votre budget.</p>
+      <button>Choisir mon budget</button>
+    </div>
+
+    <h2>Communes</h2>
+
+    <div class="communes">
+      <div class="commune">Cocody</div>
+      <div class="commune">Yopougon</div>
+      <div class="commune">Abobo</div>
+      <div class="commune">Marcory</div>
+      <div class="commune">Plateau</div>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 Mon Quartier
+  </footer>
+
+</body>
+</html>
