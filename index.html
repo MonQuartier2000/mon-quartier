@@ -3,164 +3,620 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Mon Quartier</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background: #f7f9fc;
-      color: #222;
+      background: #f7f8fa;
+      color: #202124;
     }
 
+    /* HEADER */
+
     header {
-      background: white;
-      padding: 25px 20px;
+      background: #ffffff;
+      padding: 28px 20px 22px;
       text-align: center;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #eeeeee;
     }
 
     .logo {
       font-size: 30px;
-      font-weight: bold;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #e85d04;
     }
 
     .slogan {
-      margin-top: 8px;
-      color: #666;
-      font-size: 15px;
+      margin-top: 7px;
+      font-size: 14px;
+      color: #777;
     }
+
+    /* CONTENEUR */
 
     .container {
-      padding: 25px 20px;
-      max-width: 700px;
+      max-width: 760px;
       margin: auto;
+      padding: 22px 18px 90px;
     }
 
-    .search {
+    /* RECHERCHE */
+
+    .search-box {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 15px;
+      padding: 15px 17px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    }
+
+    .search-icon {
+      font-size: 19px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
       width: 100%;
-      padding: 16px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-size: 16px;
-      margin-bottom: 25px;
+      font-size: 15px;
+      background: transparent;
     }
 
-    h2 {
-      margin-bottom: 15px;
+    /* TITRES */
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
       font-size: 20px;
     }
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 30px;
+    .section-title span {
+      font-size: 13px;
+      color: #e85d04;
     }
 
-    .category {
-      background: white;
-      padding: 20px 10px;
-      border-radius: 14px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      font-weight: bold;
-    }
+    /* CATEGORIE */
 
-    .budget {
-      background: #fff;
+    .category-card {
+      background: #ffffff;
+      border-radius: 18px;
       padding: 20px;
-      border-radius: 14px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      border: 1px solid #eeeeee;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom: 28px;
     }
 
-    .budget button {
-      margin-top: 15px;
-      width: 100%;
+    .category-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: #fff1e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+    }
+
+    .category-card h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .category-card p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    /* RESTAURANTS */
+
+    .restaurant-list {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 30px;
+    }
+
+    .restaurant-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .restaurant {
+      min-width: 235px;
+      background: #ffffff;
+      border-radius: 17px;
+      overflow: hidden;
+      border: 1px solid #eeeeee;
+      box-shadow: 0 4px 13px rgba(0,0,0,0.05);
+    }
+
+    .restaurant-photo {
+      height: 125px;
+      background: linear-gradient(135deg, #ffe2cf, #fff5ed);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+    }
+
+    .restaurant-info {
       padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: #e63946;
-      color: white;
+    }
+
+    .restaurant-info h3 {
       font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .restaurant-info p {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .rating {
+      font-size: 13px;
+      margin-top: 7px;
+    }
+
+    /* BUDGET */
+
+    .budget-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #eeeeee;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+
+    .budget-card h2 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .budget-card p {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .budget-button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      background: #e85d04;
+      color: white;
+      font-size: 15px;
       font-weight: bold;
     }
+
+    /* COMMUNES */
 
     .communes {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 10px;
+      margin-bottom: 30px;
     }
 
     .commune {
       background: white;
-      padding: 12px 18px;
-      border-radius: 20px;
-      white-space: nowrap;
-      border: 1px solid #eee;
+      border: 1px solid #eeeeee;
+      border-radius: 12px;
+      padding: 13px 8px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    footer {
+    .commune:hover {
+      border-color: #e85d04;
+      transform: translateY(-1px);
+    }
+
+    .commune.active {
+      background: #e85d04;
+      color: white;
+      border-color: #e85d04;
+    }
+
+    /* MESSAGE */
+
+    #message {
+      display: none;
+      background: white;
+      border-radius: 13px;
+      padding: 15px;
+      margin-top: 15px;
       text-align: center;
-      padding: 30px 20px;
+      font-size: 14px;
+      color: #666;
+      border: 1px solid #eeeeee;
+    }
+
+    /* NAVIGATION */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 66px;
+      background: white;
+      border-top: 1px solid #eeeeee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 11px;
       color: #777;
-      font-size: 13px;
+    }
+
+    .nav-item.active {
+      color: #e85d04;
+      font-weight: bold;
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 480px) {
+
+      .logo {
+        font-size: 28px;
+      }
+
+      .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .restaurant {
+        min-width: 220px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- EN-TÊTE -->
+
   <header>
-    <div class="logo">Mon Quartier</div>
-    <div class="slogan">Le meilleur autour de vous</div>
+
+    <div class="logo">
+      Mon <span>Quartier</span>
+    </div>
+
+    <div class="slogan">
+      Le meilleur autour de vous
+    </div>
+
   </header>
+
 
   <main class="container">
 
-    <input
-      class="search"
-      type="text"
-      placeholder="Que cherchez-vous ?"
-    >
+    <!-- RECHERCHE -->
 
-    <h2>Catégories</h2>
+    <div class="search-box">
 
-    <div class="categories">
-      <div class="category">🍽️ Restaurants</div>
-      <div class="category">🛍️ Boutiques</div>
-      <div class="category">🔧 Garages</div>
-      <div class="category">👨‍⚕️ Santé</div>
+      <div class="search-icon">🔎</div>
+
+      <input
+        type="text"
+        id="search"
+        placeholder="Que cherchez-vous ?"
+        onkeyup="rechercher()"
+      >
+
     </div>
 
-    <div class="budget">
-      <h2>Que puis-je manger avec mon budget ?</h2>
-      <p>Trouvez des plats adaptés à votre budget.</p>
-      <button>Choisir mon budget</button>
+
+    <!-- CATEGORIE -->
+
+    <div class="section-title">
+      <h2>Catégorie</h2>
     </div>
 
-    <h2>Communes</h2>
+    <div class="category-card">
+
+      <div class="category-icon">
+        🍽️
+      </div>
+
+      <div>
+        <h3>Restaurants</h3>
+
+        <p>
+          Découvrez les restaurants autour de vous
+          et trouvez où manger facilement.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- RESTAURANTS A DECOUVRIR -->
+
+    <div class="section-title">
+
+      <h2>Restaurants à découvrir</h2>
+
+      <span>Voir tout</span>
+
+    </div>
+
+
+    <div class="restaurant-list">
+
+      <div class="restaurant">
+
+        <div class="restaurant-photo">
+          🍛
+        </div>
+
+        <div class="restaurant-info">
+
+          <h3>Restaurant à découvrir</h3>
+
+          <p>📍 Abidjan</p>
+
+          <div class="rating">
+            ⭐ Nouveau
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="restaurant">
+
+        <div class="restaurant-photo">
+          🍲
+        </div>
+
+        <div class="restaurant-info">
+
+          <h3>Bientôt disponible</h3>
+
+          <p>📍 Abidjan</p>
+
+          <div class="rating">
+            ⭐ Nouveau
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BUDGET -->
+
+    <div class="budget-card">
+
+      <h2>💰 Que puis-je manger avec mon budget ?</h2>
+
+      <p>
+        Indiquez votre budget et votre commune pour
+        trouver les plats qui correspondent à votre budget.
+      </p>
+
+      <button
+        class="budget-button"
+        onclick="choisirBudget()"
+      >
+        Choisir mon budget
+      </button>
+
+    </div>
+
+
+    <!-- COMMUNES -->
+
+    <div class="section-title">
+
+      <h2>📍 Communes d'Abidjan</h2>
+
+    </div>
+
 
     <div class="communes">
-      <div class="commune">Cocody</div>
-      <div class="commune">Yopougon</div>
-      <div class="commune">Abobo</div>
-      <div class="commune">Marcory</div>
-      <div class="commune">Plateau</div>
+
+      <div class="commune" onclick="choisirCommune(this,'Abobo')">
+        Abobo
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Adjamé')">
+        Adjamé
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Anyama')">
+        Anyama
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Attécoubé')">
+        Attécoubé
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Bingerville')">
+        Bingerville
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Cocody')">
+        Cocody
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Koumassi')">
+        Koumassi
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Marcory')">
+        Marcory
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Plateau')">
+        Plateau
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Port-Bouët')">
+        Port-Bouët
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Songon')">
+        Songon
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Treichville')">
+        Treichville
+      </div>
+
+      <div class="commune" onclick="choisirCommune(this,'Yopougon')">
+        Yopougon
+      </div>
+
     </div>
+
+
+    <div id="message"></div>
 
   </main>
 
-  <footer>
-    © 2026 Mon Quartier
-  </footer>
+
+  <!-- NAVIGATION DU BAS -->
+
+  <nav class="bottom-nav">
+
+    <div class="nav-item active">
+      <div class="nav-icon">⌂</div>
+      Accueil
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">🍽️</div>
+      Restaurants
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">📍</div>
+      Communes
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">👤</div>
+      Compte
+    </div>
+
+  </nav>
+
+
+  <script>
+
+    function choisirCommune(element, commune) {
+
+      document.querySelectorAll(".commune").forEach(function(item) {
+        item.classList.remove("active");
+      });
+
+      element.classList.add("active");
+
+      const message = document.getElementById("message");
+
+      message.style.display = "block";
+
+      message.innerHTML =
+        "📍 Vous avez choisi <strong>" +
+        commune +
+        "</strong>.<br><br>" +
+        "Les restaurants disponibles dans cette commune seront bientôt affichés ici.";
+
+    }
+
+
+    function choisirBudget() {
+
+      const message = document.getElementById("message");
+
+      message.style.display = "block";
+
+      message.innerHTML =
+        "💰 La recherche par budget sera bientôt disponible.<br><br>" +
+        "Vous pourrez choisir votre budget, puis votre commune.";
+
+    }
+
+
+    function rechercher() {
+
+      const recherche =
+        document.getElementById("search").value.toLowerCase();
+
+      const communes =
+        document.querySelectorAll(".commune");
+
+      communes.forEach(function(commune) {
+
+        const nom =
+          commune.textContent.toLowerCase();
+
+        if (
+          nom.includes(recherche) ||
+          recherche === ""
+        ) {
+
+          commune.style.display = "block";
+
+        } else {
+
+          commune.style.display = "none";
+
+        }
+
+      });
+
+    }
+
+  </script>
 
 </body>
 </html>
