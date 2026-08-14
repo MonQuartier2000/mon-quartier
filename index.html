@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mon Quartier</title>
+  <title>Mon Quartier - Les meilleurs restaurants autour de vous</title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -15,318 +16,614 @@
     }
 
     body {
-      background: #f7f8fa;
-      color: #202124;
+      background: #ffffff;
+      color: #222222;
+      padding-bottom: 85px;
     }
 
-    /* HEADER */
+    /* =========================
+       COULEURS
+    ========================= */
+
+    :root {
+      --orange: #f26b21;
+      --orange-light: #fff1e8;
+      --text: #222222;
+      --gray: #777777;
+      --light: #f7f7f7;
+      --border: #eeeeee;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
       background: #ffffff;
-      padding: 28px 20px 22px;
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: var(--orange-light);
+      color: var(--orange);
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* =========================
+       LOGO
+    ========================= */
+
+    .logo-area {
       text-align: center;
-      border-bottom: 1px solid #eeeeee;
     }
 
     .logo {
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -1px;
+      display: inline-flex;
+      align-items: center;
+      font-family: cursive;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 38px;
+      line-height: 1;
     }
 
-    .logo span {
-      color: #e85d04;
+    .mon {
+      background: var(--orange);
+      color: white;
+      padding: 7px 12px 8px;
+      border-radius: 13px 4px 13px 4px;
+      position: relative;
+      margin-right: 4px;
+    }
+
+    .quartier {
+      color: var(--orange);
+    }
+
+    .location-mark {
+      position: absolute;
+      left: 25px;
+      bottom: -12px;
+      width: 17px;
+      height: 22px;
+      background: var(--orange);
+      border: 2px solid white;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+    }
+
+    .location-mark::after {
+      content: "🍴";
+      position: absolute;
+      font-size: 9px;
+      transform: rotate(45deg);
+      top: 4px;
+      left: 2px;
+    }
+
+    .logo-underline {
+      width: 110px;
+      height: 5px;
+      border-bottom: 3px solid var(--orange);
+      border-radius: 50%;
+      margin: 4px auto 7px;
+      transform: rotate(-2deg);
     }
 
     .slogan {
-      margin-top: 7px;
-      font-size: 14px;
-      color: #777;
+      font-size: 13px;
+      color: var(--gray);
     }
 
-    /* CONTENEUR */
+    /* =========================
+       CONTENU
+    ========================= */
 
     .container {
-      max-width: 760px;
+      width: 100%;
+      max-width: 900px;
       margin: auto;
-      padding: 22px 18px 90px;
+      padding: 20px 17px;
     }
 
-    /* RECHERCHE */
+    /* =========================
+       RECHERCHE
+    ========================= */
 
     .search-box {
-      background: #ffffff;
-      border: 1px solid #e5e5e5;
-      border-radius: 15px;
-      padding: 15px 17px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 28px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+      background: #f7f7f7;
+      border: 1px solid #eeeeee;
+      border-radius: 18px;
+      padding: 6px 7px 6px 15px;
+      margin-bottom: 22px;
     }
 
     .search-icon {
+      color: #999999;
       font-size: 19px;
+      margin-right: 10px;
     }
 
     .search-box input {
+      flex: 1;
       border: none;
       outline: none;
-      width: 100%;
-      font-size: 15px;
       background: transparent;
+      font-size: 14px;
+      color: var(--text);
     }
 
-    /* TITRES */
+    .search-box input::placeholder {
+      color: #999999;
+    }
 
-    .section-title {
+    .search-button {
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-size: 19px;
+    }
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    .categories-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      flex: 1;
+      scrollbar-width: none;
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      min-width: 88px;
+      padding: 13px 8px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      flex-shrink: 0;
+    }
+
+    .category.active {
+      background: var(--orange);
+      color: white;
+      border-color: var(--orange);
+    }
+
+    .category-icon {
+      font-size: 23px;
+      margin-bottom: 6px;
+    }
+
+    .category-name {
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .category-arrow {
+      color: var(--orange);
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      background: linear-gradient(
+        135deg,
+        #fff7f1,
+        #ffffff
+      );
+      border-radius: 24px;
+      padding: 22px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 32px;
+      border: 1px solid #f3e7df;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 25px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 span {
+      color: var(--orange);
+      font-family: cursive;
+      font-style: italic;
+    }
+
+    .hero-text p {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 17px;
+    }
+
+    .explore-button {
+      border: none;
+      background: var(--orange);
+      color: white;
+      padding: 13px 17px;
+      border-radius: 13px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .hero-photo {
+      width: 145px;
+      height: 170px;
+      border-radius: 20px;
+      background: linear-gradient(
+        145deg,
+        #d98a45,
+        #8d421e
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 67px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* =========================
+       TITRES
+    ========================= */
+
+    .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 14px;
     }
 
-    .section-title h2 {
+    .section-title {
       font-size: 20px;
+      font-weight: bold;
     }
 
     .section-title span {
+      color: var(--orange);
+    }
+
+    .see-all {
+      color: var(--orange);
       font-size: 13px;
-      color: #e85d04;
+      font-weight: bold;
     }
 
-    /* CATEGORIE */
-
-    .category-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 17px;
-      border: 1px solid #eeeeee;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-      margin-bottom: 28px;
-    }
-
-    .category-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
-      background: #fff1e8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 29px;
-    }
-
-    .category-card h3 {
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-
-    .category-card p {
-      font-size: 13px;
-      color: #777;
-      line-height: 1.4;
-    }
-
-    /* RESTAURANTS */
+    /* =========================
+       RESTAURANTS
+    ========================= */
 
     .restaurant-list {
       display: flex;
       gap: 14px;
       overflow-x: auto;
       padding-bottom: 8px;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
+      scrollbar-width: none;
     }
 
     .restaurant-list::-webkit-scrollbar {
       display: none;
     }
 
-    .restaurant {
+    .restaurant-card {
       min-width: 235px;
-      background: #ffffff;
-      border-radius: 17px;
+      background: white;
+      border-radius: 18px;
       overflow: hidden;
-      border: 1px solid #eeeeee;
-      box-shadow: 0 4px 13px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      box-shadow: 0 5px 16px rgba(0,0,0,0.07);
+      flex-shrink: 0;
     }
 
-    .restaurant-photo {
-      height: 125px;
-      background: linear-gradient(135deg, #ffe2cf, #fff5ed);
+    .restaurant-image {
+      height: 135px;
+      background: linear-gradient(
+        135deg,
+        #ffcf9f,
+        #c95b1d
+      );
+      position: relative;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-size: 48px;
+      justify-content: center;
+      font-size: 52px;
     }
 
-    .restaurant-info {
-      padding: 14px;
-    }
-
-    .restaurant-info h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    .restaurant-info p {
-      color: #777;
-      font-size: 13px;
-      margin-bottom: 5px;
+    .heart {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .rating {
-      font-size: 13px;
-      margin-top: 7px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: white;
+      padding: 6px 8px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: bold;
     }
 
-    /* BUDGET */
+    .restaurant-info {
+      padding: 13px;
+    }
 
-    .budget-card {
-      background: #ffffff;
-      border-radius: 18px;
+    .restaurant-name {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .restaurant-type {
+      color: var(--gray);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .restaurant-bottom {
+      display: flex;
+      justify-content: space-between;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       BUDGET
+    ========================= */
+
+    .budget {
+      background: var(--orange);
+      color: white;
       padding: 22px;
-      border: 1px solid #eeeeee;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-      margin-bottom: 30px;
+      border-radius: 20px;
+      margin-bottom: 32px;
     }
 
-    .budget-card h2 {
+    .budget h2 {
       font-size: 19px;
       margin-bottom: 8px;
     }
 
-    .budget-card p {
-      color: #777;
-      font-size: 14px;
+    .budget p {
+      font-size: 13px;
       line-height: 1.5;
-      margin-bottom: 16px;
+      opacity: 0.95;
+      margin-bottom: 15px;
     }
 
     .budget-button {
-      width: 100%;
+      background: white;
+      color: var(--orange);
       border: none;
-      border-radius: 12px;
-      padding: 14px;
-      background: #e85d04;
-      color: white;
-      font-size: 15px;
+      padding: 12px 16px;
+      border-radius: 11px;
       font-weight: bold;
     }
 
-    /* COMMUNES */
+    /* =========================
+       COMMUNES
+    ========================= */
 
     .communes {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 30px;
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+
+    .communes::-webkit-scrollbar {
+      display: none;
     }
 
     .commune {
-      background: white;
-      border: 1px solid #eeeeee;
-      border-radius: 12px;
-      padding: 13px 8px;
+      min-width: 105px;
       text-align: center;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.2s;
+      flex-shrink: 0;
     }
 
-    .commune:hover {
-      border-color: #e85d04;
-      transform: translateY(-1px);
+    .commune-image {
+      width: 88px;
+      height: 88px;
+      margin: auto;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        #ffd0ad,
+        #e66c24
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      border: 3px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
     }
 
-    .commune.active {
-      background: #e85d04;
-      color: white;
-      border-color: #e85d04;
+    .commune-name {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: bold;
     }
 
-    /* MESSAGE */
+    /* =========================
+       MESSAGE
+    ========================= */
 
     #message {
       display: none;
-      background: white;
-      border-radius: 13px;
-      padding: 15px;
       margin-top: 15px;
+      padding: 15px;
+      background: var(--orange-light);
+      color: #555;
+      border-radius: 12px;
       text-align: center;
-      font-size: 14px;
-      color: #666;
-      border: 1px solid #eeeeee;
+      font-size: 13px;
     }
 
-    /* NAVIGATION */
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     .bottom-nav {
       position: fixed;
-      bottom: 0;
       left: 0;
       right: 0;
-      height: 66px;
+      bottom: 0;
+      height: 72px;
       background: white;
       border-top: 1px solid #eeeeee;
       display: flex;
       justify-content: space-around;
       align-items: center;
       z-index: 100;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
     }
 
     .nav-item {
       text-align: center;
-      font-size: 11px;
-      color: #777;
-    }
-
-    .nav-item.active {
-      color: #e85d04;
-      font-weight: bold;
+      color: #888888;
+      font-size: 10px;
     }
 
     .nav-icon {
       font-size: 20px;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
-    /* MOBILE */
+    .nav-item.active {
+      color: var(--orange);
+      font-weight: bold;
+    }
 
-    @media (max-width: 480px) {
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
 
       .logo {
-        font-size: 28px;
+        font-size: 34px;
       }
 
-      .container {
-        padding-left: 15px;
-        padding-right: 15px;
+      .hero {
+        padding: 18px;
       }
 
-      .restaurant {
-        min-width: 220px;
+      .hero-text h1 {
+        font-size: 22px;
+      }
+
+      .hero-photo {
+        width: 125px;
+        height: 155px;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- EN-TÊTE -->
+  <!-- =========================
+       EN-TÊTE
+  ========================= -->
 
   <header>
 
-    <div class="logo">
-      Mon <span>Quartier</span>
+    <div class="top-bar">
+
+      <button class="icon-button" aria-label="Menu">
+        ☰
+      </button>
+
+      <button class="icon-button" aria-label="Notifications">
+        🔔
+      </button>
+
     </div>
 
-    <div class="slogan">
-      Le meilleur autour de vous
+
+    <div class="logo-area">
+
+      <div class="logo">
+
+        <div class="mon">
+          Mon
+          <div class="location-mark"></div>
+        </div>
+
+        <div class="quartier">
+          Quartier
+        </div>
+
+      </div>
+
+      <div class="logo-underline"></div>
+
+      <div class="slogan">
+        Les meilleurs restaurants autour de vous
+      </div>
+
     </div>
 
   </header>
@@ -334,73 +631,154 @@
 
   <main class="container">
 
-    <!-- RECHERCHE -->
+
+    <!-- =========================
+         RECHERCHE
+    ========================= -->
 
     <div class="search-box">
 
-      <div class="search-icon">🔎</div>
+      <div class="search-icon">
+        🔎
+      </div>
 
       <input
         type="text"
         id="search"
-        placeholder="Que cherchez-vous ?"
-        onkeyup="rechercher()"
+        placeholder="Où voulez-vous bien manger aujourd’hui ?"
       >
 
+      <button
+        class="search-button"
+        onclick="rechercher()"
+      >
+        🔎
+      </button>
+
     </div>
 
 
-    <!-- CATEGORIE -->
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
 
-    <div class="section-title">
-      <h2>Catégorie</h2>
-    </div>
+    <div class="categories-wrapper">
 
-    <div class="category-card">
+      <div class="categories">
 
-      <div class="category-icon">
-        🍽️
+        <div class="category active">
+          <div class="category-icon">🍴</div>
+          <div class="category-name">Tous</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">🔥</div>
+          <div class="category-name">Grillades</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">🍔</div>
+          <div class="category-name">Fast-food</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">🍕</div>
+          <div class="category-name">Pizzas</div>
+        </div>
+
       </div>
 
-      <div>
-        <h3>Restaurants</h3>
+      <div class="category-arrow">
+        ›
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+      <div class="hero-text">
+
+        <h1>
+          Trouvez le restaurant
+          qui fera <span>plaisir</span>
+          à vos papilles !
+        </h1>
 
         <p>
-          Découvrez les restaurants autour de vous
-          et trouvez où manger facilement.
+          Goûtez, découvrez, partagez…
         </p>
+
+        <button
+          class="explore-button"
+          onclick="explorer()"
+        >
+          Explorer maintenant →
+        </button>
+
       </div>
 
-    </div>
+
+      <div class="hero-photo">
+        🍛
+      </div>
+
+    </section>
 
 
-    <!-- RESTAURANTS A DECOUVRIR -->
+    <!-- =========================
+         RESTAURANTS TENDANCE
+    ========================= -->
 
-    <div class="section-title">
+    <div class="section-header">
 
-      <h2>Restaurants à découvrir</h2>
+      <div class="section-title">
+        🔥 Restaurants tendance
+      </div>
 
-      <span>Voir tout</span>
+      <div class="see-all">
+        Voir tout ›
+      </div>
 
     </div>
 
 
     <div class="restaurant-list">
 
-      <div class="restaurant">
 
-        <div class="restaurant-photo">
-          🍛
+      <div class="restaurant-card">
+
+        <div class="restaurant-image">
+
+          🍖
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="rating">
+            ⭐ 4,7
+          </div>
+
         </div>
 
         <div class="restaurant-info">
 
-          <h3>Restaurant à découvrir</h3>
+          <div class="restaurant-name">
+            Le Wafou
+          </div>
 
-          <p>📍 Abidjan</p>
+          <div class="restaurant-type">
+            Africain • Grillades
+          </div>
 
-          <div class="rating">
-            ⭐ Nouveau
+          <div class="restaurant-bottom">
+            <span>📍 Cocody</span>
+            <span>€€</span>
           </div>
 
         </div>
@@ -408,38 +786,94 @@
       </div>
 
 
-      <div class="restaurant">
+      <div class="restaurant-card">
 
-        <div class="restaurant-photo">
-          🍲
+        <div class="restaurant-image">
+
+          🐟
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="rating">
+            ⭐ 4,5
+          </div>
+
         </div>
 
         <div class="restaurant-info">
 
-          <h3>Bientôt disponible</h3>
+          <div class="restaurant-name">
+            Sky Lounge
+          </div>
 
-          <p>📍 Abidjan</p>
+          <div class="restaurant-type">
+            Français • Poissons
+          </div>
 
-          <div class="rating">
-            ⭐ Nouveau
+          <div class="restaurant-bottom">
+            <span>📍 Plateau</span>
+            <span>€€€</span>
           </div>
 
         </div>
 
       </div>
+
+
+      <div class="restaurant-card">
+
+        <div class="restaurant-image">
+
+          🍽️
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="rating">
+            ⭐ 4,6
+          </div>
+
+        </div>
+
+        <div class="restaurant-info">
+
+          <div class="restaurant-name">
+            La Croisette
+          </div>
+
+          <div class="restaurant-type">
+            International
+          </div>
+
+          <div class="restaurant-bottom">
+            <span>📍 Marcory</span>
+            <span>€€</span>
+          </div>
+
+        </div>
+
+      </div>
+
 
     </div>
 
 
-    <!-- BUDGET -->
+    <!-- =========================
+         BUDGET
+    ========================= -->
 
-    <div class="budget-card">
+    <section class="budget">
 
-      <h2>💰 Que puis-je manger avec mon budget ?</h2>
+      <h2>
+        💰 Que puis-je manger avec mon budget ?
+      </h2>
 
       <p>
-        Indiquez votre budget et votre commune pour
-        trouver les plats qui correspondent à votre budget.
+        Choisissez votre budget puis votre commune
+        pour découvrir les plats qui correspondent.
       </p>
 
       <button
@@ -449,71 +883,210 @@
         Choisir mon budget
       </button>
 
-    </div>
+    </section>
 
 
-    <!-- COMMUNES -->
+    <!-- =========================
+         COMMUNES
+    ========================= -->
 
-    <div class="section-title">
+    <div class="section-header">
 
-      <h2>📍 Communes d'Abidjan</h2>
+      <div class="section-title">
+        📍 Par communes
+      </div>
+
+      <div class="see-all">
+        Voir tout ›
+      </div>
 
     </div>
 
 
     <div class="communes">
 
-      <div class="commune" onclick="choisirCommune(this,'Abobo')">
-        Abobo
+
+      <div class="commune"
+           onclick="choisirCommune('Abobo')">
+
+        <div class="commune-image">
+          🏙️
+        </div>
+
+        <div class="commune-name">
+          Abobo
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Adjamé')">
-        Adjamé
+
+      <div class="commune"
+           onclick="choisirCommune('Adjamé')">
+
+        <div class="commune-image">
+          🏢
+        </div>
+
+        <div class="commune-name">
+          Adjamé
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Anyama')">
-        Anyama
+
+      <div class="commune"
+           onclick="choisirCommune('Anyama')">
+
+        <div class="commune-image">
+          🌆
+        </div>
+
+        <div class="commune-name">
+          Anyama
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Attécoubé')">
-        Attécoubé
+
+      <div class="commune"
+           onclick="choisirCommune('Attécoubé')">
+
+        <div class="commune-image">
+          🌇
+        </div>
+
+        <div class="commune-name">
+          Attécoubé
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Bingerville')">
-        Bingerville
+
+      <div class="commune"
+           onclick="choisirCommune('Bingerville')">
+
+        <div class="commune-image">
+          🌴
+        </div>
+
+        <div class="commune-name">
+          Bingerville
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Cocody')">
-        Cocody
+
+      <div class="commune"
+           onclick="choisirCommune('Cocody')">
+
+        <div class="commune-image">
+          🌉
+        </div>
+
+        <div class="commune-name">
+          Cocody
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Koumassi')">
-        Koumassi
+
+      <div class="commune"
+           onclick="choisirCommune('Koumassi')">
+
+        <div class="commune-image">
+          🏙️
+        </div>
+
+        <div class="commune-name">
+          Koumassi
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Marcory')">
-        Marcory
+
+      <div class="commune"
+           onclick="choisirCommune('Marcory')">
+
+        <div class="commune-image">
+          🏢
+        </div>
+
+        <div class="commune-name">
+          Marcory
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Plateau')">
-        Plateau
+
+      <div class="commune"
+           onclick="choisirCommune('Plateau')">
+
+        <div class="commune-image">
+          🏙️
+        </div>
+
+        <div class="commune-name">
+          Plateau
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Port-Bouët')">
-        Port-Bouët
+
+      <div class="commune"
+           onclick="choisirCommune('Port-Bouët')">
+
+        <div class="commune-image">
+          🌊
+        </div>
+
+        <div class="commune-name">
+          Port-Bouët
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Songon')">
-        Songon
+
+      <div class="commune"
+           onclick="choisirCommune('Songon')">
+
+        <div class="commune-image">
+          🌴
+        </div>
+
+        <div class="commune-name">
+          Songon
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Treichville')">
-        Treichville
+
+      <div class="commune"
+           onclick="choisirCommune('Treichville')">
+
+        <div class="commune-image">
+          🏛️
+        </div>
+
+        <div class="commune-name">
+          Treichville
+        </div>
+
       </div>
 
-      <div class="commune" onclick="choisirCommune(this,'Yopougon')">
-        Yopougon
+
+      <div class="commune"
+           onclick="choisirCommune('Yopougon')">
+
+        <div class="commune-image">
+          🏘️
+        </div>
+
+        <div class="commune-name">
+          Yopougon
+        </div>
+
       </div>
+
 
     </div>
 
@@ -523,44 +1096,68 @@
   </main>
 
 
-  <!-- NAVIGATION DU BAS -->
+  <!-- =========================
+       NAVIGATION BAS
+  ========================= -->
 
   <nav class="bottom-nav">
 
     <div class="nav-item active">
-      <div class="nav-icon">⌂</div>
+
+      <div class="nav-icon">
+        🏠
+      </div>
+
       Accueil
+
     </div>
 
-    <div class="nav-item">
-      <div class="nav-icon">🍽️</div>
-      Restaurants
-    </div>
 
     <div class="nav-item">
-      <div class="nav-icon">📍</div>
-      Communes
+
+      <div class="nav-icon">
+        🔎
+      </div>
+
+      Recherche
+
     </div>
 
+
     <div class="nav-item">
-      <div class="nav-icon">👤</div>
-      Compte
+
+      <div class="nav-icon">
+        ♡
+      </div>
+
+      Favoris
+
+    </div>
+
+
+    <div class="nav-item">
+
+      <div class="nav-icon">
+        👤
+      </div>
+
+      Profil
+
     </div>
 
   </nav>
 
 
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
   <script>
 
-    function choisirCommune(element, commune) {
+    function choisirCommune(commune) {
 
-      document.querySelectorAll(".commune").forEach(function(item) {
-        item.classList.remove("active");
-      });
-
-      element.classList.add("active");
-
-      const message = document.getElementById("message");
+      const message =
+        document.getElementById("message");
 
       message.style.display = "block";
 
@@ -568,20 +1165,36 @@
         "📍 Vous avez choisi <strong>" +
         commune +
         "</strong>.<br><br>" +
-        "Les restaurants disponibles dans cette commune seront bientôt affichés ici.";
+        "Les restaurants disponibles dans cette commune seront affichés ici.";
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+      });
 
     }
 
 
     function choisirBudget() {
 
-      const message = document.getElementById("message");
+      const message =
+        document.getElementById("message");
 
       message.style.display = "block";
 
       message.innerHTML =
-        "💰 La recherche par budget sera bientôt disponible.<br><br>" +
-        "Vous pourrez choisir votre budget, puis votre commune.";
+        "💰 La recherche par budget arrive bientôt.<br><br>" +
+        "Vous pourrez choisir votre budget puis votre commune.";
+
+    }
+
+
+    function explorer() {
+
+      document.querySelector(".restaurant-list")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
     }
 
@@ -589,30 +1202,24 @@
     function rechercher() {
 
       const recherche =
-        document.getElementById("search").value.toLowerCase();
+        document.getElementById("search").value
+        .toLowerCase()
+        .trim();
 
-      const communes =
-        document.querySelectorAll(".commune");
+      if (recherche === "") {
+        return;
+      }
 
-      communes.forEach(function(commune) {
+      const message =
+        document.getElementById("message");
 
-        const nom =
-          commune.textContent.toLowerCase();
+      message.style.display = "block";
 
-        if (
-          nom.includes(recherche) ||
-          recherche === ""
-        ) {
-
-          commune.style.display = "block";
-
-        } else {
-
-          commune.style.display = "none";
-
-        }
-
-      });
+      message.innerHTML =
+        "🔎 Recherche : <strong>" +
+        recherche +
+        "</strong><br><br>" +
+        "Les restaurants correspondant à votre recherche apparaîtront ici.";
 
     }
 
